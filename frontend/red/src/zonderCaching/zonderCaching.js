@@ -20,16 +20,19 @@ export class zonderCaching extends LitElement {
     }
 
     async loadProducts() {
-        const startTime = performance.now();
+        const url = 'http://localhost:5173/api/products';
         const { products} = await fetchProducts(true);
-        const endTime = performance.now();
-        const duration = (endTime - startTime).toFixed(2);
+        const entries = performance.getEntriesByName(url);
+        if (entries.length > 0) {
+            const lastEntry = entries[entries.length - 1]; // pak de meest recente fetch
+            this.fetchTime = lastEntry.responseEnd - lastEntry.startTime;
+        }
 
         if (products) {
             this.cachedProducts = products;
         }
 
-        this.fetchTime = duration;
+        this.fetchTime = this.fetchTime.toFixed(2);
     }
 
     async addProduct(productName) {

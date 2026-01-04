@@ -20,13 +20,19 @@ export class metCaching extends LitElement {
     }
 
     async loadProducts() {
-        const { products} = await fetchProducts();
-
+        const url = 'http://localhost:5173/api/products';
+        const { products} = await fetchProducts(false);
+        const entries = performance.getEntriesByName(url);
+        if (entries.length > 0) {
+            const lastEntry = entries[entries.length - 1]; // pak de meest recente fetch
+            this.fetchTime = lastEntry.responseEnd - lastEntry.startTime;
+        }
 
         if (products) {
             this.cachedProducts = products;
         }
-        this.fetchTime = duration;
+
+        this.fetchTime = this.fetchTime.toFixed(2);
     }
 
     async addProduct(productName) {
