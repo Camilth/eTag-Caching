@@ -24,7 +24,7 @@ export class zonderCaching extends LitElement {
         const { products} = await fetchProducts(true);
         const entries = performance.getEntriesByName(url);
         if (entries.length > 0) {
-            const lastEntry = entries[entries.length - 1]; // pak de meest recente fetch
+            const lastEntry = entries[entries.length - 1];
             this.fetchTime = lastEntry.responseEnd - lastEntry.startTime;
         }
 
@@ -43,8 +43,7 @@ export class zonderCaching extends LitElement {
         return html`
       <section>
           <h1>Zonder Caching</h1>
-          <button @click=${() => this.loadProducts()}>Call</button> 
-          <button @click=${() => this.addProduct("RandomProduct")}>Voeg product toe</button>
+          <button @click=${() => this.loadProducts()}> [ CALL ]</button> 
           <p>Aantal producten: ${this.cachedProducts.length}</p>
           <p class="time">Calltijd: ${this.fetchTime}ms</p>
       </section>

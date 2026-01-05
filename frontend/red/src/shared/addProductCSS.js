@@ -1,12 +1,12 @@
 import {css} from 'lit'
 
-export const cardCss = css`
+export const AddProductCSS = css`
 :host {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
+    padding: 2rem;
 }
     
     button {
@@ -16,7 +16,7 @@ export const cardCss = css`
     
     section {
         border: 2px solid red;
-        padding: 10rem;
+        padding: 1rem;
     }
     
     .time {

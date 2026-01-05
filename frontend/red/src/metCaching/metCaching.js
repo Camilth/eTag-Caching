@@ -24,7 +24,7 @@ export class metCaching extends LitElement {
         const { products} = await fetchProducts(false);
         const entries = performance.getEntriesByName(url);
         if (entries.length > 0) {
-            const lastEntry = entries[entries.length - 1]; // pak de meest recente fetch
+            const lastEntry = entries[entries.length - 1];
             this.fetchTime = lastEntry.responseEnd - lastEntry.startTime;
         }
 
@@ -41,12 +41,13 @@ export class metCaching extends LitElement {
 
   render() {
     return html`
-      <section>
+      <section class="wrapper">
           <h1>Met Caching</h1>
-          <button @click=${() => this.loadProducts()}>Call</button> 
-          <button @click=${() => this.addProduct("RandomProduct")}>Voeg product toe</button>
+          <button @click=${() => this.loadProducts()} class="call">[ CALL ]</button> 
+          <section class="summary">
           <p>Aantal producten: ${this.cachedProducts.length}</p>
           <p class="time">Calltijd: ${this.fetchTime}ms</p>
+          </section>
       </section>
     `
   }
