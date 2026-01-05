@@ -23,3 +23,7 @@ Je kan eTags ook automatisch laten generen door Spring door middel van een [Shal
 
 #### Custom eTag's
 De custom eTag logica bevindt zich in ProductController.java. Je hebt een RequestHeader nodig voor het endpoint, waarin je de eTag die de browser meegeeft bemachtigd. Vervolgens moet je het versienummer bemachtigen om deze te vergelijken met de eTag van de browser. Als deze matchen stuur je 304 'Not Modified' terug. Als deze niet matchen stuur je een 200 + body + eTag terug. Zo is de eTag en van de browser up-to-date. 
+
+#### Bronnen:
+1. https://www.baeldung.com/etags-for-rest-with-spring
+2. https://docs.spring.io/spring-framework/reference/web/webmvc/filters.html#filters-shallow-etag
