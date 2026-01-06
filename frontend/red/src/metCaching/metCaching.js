@@ -8,6 +8,7 @@ export class metCaching extends LitElement {
     static properties = {
         cachedProducts: { type: Array },
         fetchTime: { type: Number },
+        isFastCall: { type: Boolean }
     };
 
     constructor() {
@@ -33,10 +34,9 @@ export class metCaching extends LitElement {
         }
 
         this.fetchTime = this.fetchTime.toFixed(2);
-    }
 
-    async addProduct(productName) {
-        this.cachedProducts = await addProduct(productName);
+        this.isFastCall = this.fetchTime < 40;
+
     }
 
   render() {
@@ -46,7 +46,7 @@ export class metCaching extends LitElement {
           <button @click=${() => this.loadProducts()} class="call">[ CALL ]</button> 
           <section class="summary">
           <p>Aantal producten: ${this.cachedProducts.length}</p>
-          <p class="time">Calltijd: ${this.fetchTime}ms</p>
+          <p class="time" style="color: ${this.isFastCall ? 'var(--primary-color-with-cache)' : 'var(--primary-color-without-cache)'}">Calltijd: ${this.fetchTime}ms</p>
           </section>
       </section>
     `
