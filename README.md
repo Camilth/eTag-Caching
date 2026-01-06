@@ -39,4 +39,3 @@ Voor het laten zien van performance:
 
 Naar gekeken en onderzoek naar gedaan maar niet gebruikt:
 * https://redis.io/
-* 
