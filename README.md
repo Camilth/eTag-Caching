@@ -12,7 +12,7 @@ De backend kan je draaien door [RedApplication](https://github.com/Camilth/Red/b
 
 ### Hoe werkt het?
 
-De backend geeft een grote lijst aan items terug. Om te voorkomen dat deze lijst constant wordt opgevraagd terwijl er geen veranderingen zijn houden we een versienummer bij. Dit versienummer word geupdate in addItem() van ProductService.java.
+De backend geeft in mijn geval een grote lijst aan items terug. Om te voorkomen dat deze lijst constant wordt opgevraagd terwijl er geen veranderingen zijn houden we een versienummer bij. Dit versienummer word geupdate in addItem() van ProductService.java.
 
 #### eTag
 
