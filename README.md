@@ -16,7 +16,7 @@ De backend geeft in mijn geval een grote lijst aan items terug. Om te voorkomen 
 
 #### eTag
 
-Dit versienummer gebruik ik als basis voor een eTag. Een eTag is een HTTP-header. De browser houdt automatisch eTag's bij, je hoeft dus niets extra's in de frontend te implementeren.
+Een eTag is een HTTP-header waarmee een browser kan controleren of een gecachte response nog geldig is. De browser slaat de response en de eTag op. Bij een volgend request stuurt hij de eTag mee in de If-None-Match header. De backend vergelijkt die met de huidige eTag, zijn ze gelijk dan wordt een 304 Not Modified teruggegeven en gebruikt de browser de cache. Zijn ze verschillend, dan stuurt de backend een 200 OK met een nieuwe response en eTag.
 
 #### Automatische eTag's
 Je kan eTags ook automatisch laten generen door Spring door middel van een [ShallowEtagHeaderFilter](https://docs.spring.io/spring-framework/reference/web/webmvc/filters.html#filters-shallow-etag), dit werkte echter niet helemaal voor mijn situatie. Spring genereert een eTag gebaseerd op de body van de response. Deze body kan echter heel groot worden waardoor het request alsnog heel lang duurt, en het voordeel van cachen op deze manier is juist dat het snel is. Als je dan de hele body nog moet parsen verlies je heel veel van dit voordeel. Daarom heb ik er voor gekozen om een eTag bij te houden op basis van een versienummer dat verandert bij elk nieuw product.
