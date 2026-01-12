@@ -4,7 +4,7 @@ Dit project laat zien hoe je caching kan toevoegen aan een applicatie. Het gaat 
 
 ### Frontend draaien
 
-De frontend kan je draaien door naar Red\frontend\red in de command line te navigeren en dan ```npm run dev``` uit te voeren.
+De frontend kan je draaien door naar eTag-onderzoek\frontend\red in de command line te navigeren en dan ```npm run dev``` uit te voeren.
 
 ### Backend draaien
 
